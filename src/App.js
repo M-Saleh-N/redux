@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Loader from './components/loader';
+import { useGetPokemonByNameQuery } from "./services/pokemon";
 
 function App() {
+  const {date, isLoading, isError} = useGetPokemonByNameQuery("ditto")
+
+  if(isError){
+    return <p> Error loading pokemon character</p>
+  }
+  if(isLoading){
+    return <Loader/>
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>REDUX</h1>
       </header>
+
     </div>
   );
 }
